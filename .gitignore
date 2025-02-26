@@ -18,6 +18,8 @@ client/node_modules/
 .env.development.local
 .env.test.local
 .env.production.local
+client/.env.development
+client/.env.production
 
 # 日志
 npm-debug.log*

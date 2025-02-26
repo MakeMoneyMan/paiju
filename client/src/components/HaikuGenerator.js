@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
-import axios from 'axios';
+import { API_ENDPOINTS } from '../config/api';
 
 const HaikuGenerator = () => {
   const [prompt, setPrompt] = useState('');
@@ -41,9 +41,16 @@ const HaikuGenerator = () => {
     setSuccess(false);
 
     try {
-      const response = await axios.post('/api/generate-haiku', { prompt });
-      setHaiku(response.data.haiku);
-      setHaikuData(response.data.haikuData);
+      const response = await fetch(API_ENDPOINTS.GENERATE_HAIKU, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ prompt }),
+      });
+      const data = await response.json();
+      setHaiku(data.haiku);
+      setHaikuData(data.haikuData);
       setSuccess(true);
       
       // 生成成功后，触发列表刷新的提示

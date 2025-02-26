@@ -1,0 +1,27 @@
+name = "paiju-server"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+# 开发环境变量
+[vars]
+ENVIRONMENT = "development"
+
+# 生产环境变量，这些变量会在部署时从 Cloudflare 后台读取
+# [vars]
+# API_KEY = ""
+# DATABASE_URL = ""
+
+# 如果使用了 KV 存储，取消下面的注释并配置
+# [[kv_namespaces]]
+# binding = "MY_KV"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# preview_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# 如果使用了 D1 数据库，取消下面的注释并配置
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "paiju-db"
+# database_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+[triggers]
+crons = ["* * * * *"] # 每分钟执行一次 
