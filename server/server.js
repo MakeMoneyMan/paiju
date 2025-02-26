@@ -8,8 +8,16 @@ const cloudflareKV = require('./services/cloudflareKV');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// CORS 配置
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,  // 允许携带凭证
+  maxAge: 86400  // 预检请求的缓存时间，单位为秒
+}));
+
 // 中间件
-app.use(cors());
 app.use(express.json());
 
 // DeepSeek API调用生成俳句
