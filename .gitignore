@@ -20,6 +20,11 @@ client/node_modules/
 .env.production.local
 client/.env.development
 client/.env.production
+client/.env.example
+client/.env.development
+server/.env.production
+server/.env.example
+server/.env.development
 
 # 日志
 npm-debug.log*
